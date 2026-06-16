@@ -1,0 +1,1 @@
+# novedades-copilot-cli
