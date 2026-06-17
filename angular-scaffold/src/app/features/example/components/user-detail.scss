@@ -1,0 +1,118 @@
+@use '../../../../styles/variables' as vars;
+
+.user-detail-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: vars.$space-2xl vars.$space-lg vars.$space-3xl;
+}
+
+.back-link {
+  display: inline-flex;
+  margin-bottom: vars.$space-lg;
+  color: vars.$primary;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 3px solid vars.$focus-ring-strong;
+    outline-offset: 3px;
+    border-radius: vars.$radius-sm;
+  }
+}
+
+.detail-card {
+  background: vars.$surface;
+  border: 1px solid vars.$border;
+  border-radius: vars.$radius-xl;
+  padding: vars.$space-xl;
+  box-shadow: vars.$shadow-md;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: vars.$space-lg;
+  margin-bottom: vars.$space-xl;
+
+  h1 {
+    margin: 0 0 vars.$space-xs;
+    color: vars.$text-strong;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+  }
+}
+
+.username {
+  margin: 0;
+  color: vars.$text-muted;
+}
+
+.user-avatar {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  color: vars.$surface;
+  background: vars.$primary-gradient;
+  border-radius: 50%;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(120px, auto) 1fr;
+  gap: vars.$space-md vars.$space-lg;
+  margin: 0;
+}
+
+dt {
+  align-self: center;
+  color: vars.$text-subtle;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+dd {
+  margin: 0;
+  color: vars.$text-strong;
+}
+
+a {
+  color: vars.$primary;
+
+  &:focus-visible {
+    outline: 3px solid vars.$focus-ring-strong;
+    outline-offset: 2px;
+    border-radius: vars.$radius-sm;
+  }
+}
+
+.error-banner {
+  color: vars.$danger-text;
+  background: vars.$danger-bg;
+  border-left: 4px solid vars.$danger-border;
+  border-radius: vars.$radius-lg;
+  padding: vars.$space-lg;
+}
+
+@media (max-width: 640px) {
+  .detail-card {
+    padding: vars.$space-lg;
+  }
+
+  .detail-header,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-grid {
+    gap: vars.$space-sm;
+  }
+}

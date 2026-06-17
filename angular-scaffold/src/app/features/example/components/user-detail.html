@@ -1,0 +1,41 @@
+<section class="user-detail-container" [attr.aria-busy]="loading()">
+  <a routerLink="/example/users" class="back-link">← Volver a usuarios</a>
+
+  <app-spinner [visible]="loading()" message="Cargando usuario..." />
+
+  @if (error()) {
+    <div class="error-banner" role="alert">{{ error() }}</div>
+  }
+
+  @if (user(); as u) {
+    <article class="detail-card" aria-label="Detalle del usuario">
+      <header class="detail-header">
+        <div class="user-avatar" aria-hidden="true">
+          {{ u.name.charAt(0).toUpperCase() }}
+        </div>
+        <div>
+          <h1>{{ u.name }}</h1>
+          <p class="username">@{{ u.username }}</p>
+        </div>
+      </header>
+
+      <dl class="detail-grid">
+        <dt>Email</dt>
+        <dd><a [href]="'mailto:' + u.email">{{ u.email }}</a></dd>
+
+        <dt>Teléfono</dt>
+        <dd>{{ u.phone }}</dd>
+
+        <dt>Sitio web</dt>
+        <dd>
+          <a [href]="'https://' + u.website" target="_blank" rel="noopener">
+            {{ u.website }}
+          </a>
+        </dd>
+
+        <dt>Empresa</dt>
+        <dd>{{ u.company.name }}</dd>
+      </dl>
+    </article>
+  }
+</section>
