@@ -1,0 +1,39 @@
+@use '../styles/variables' as vars;
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: vars.$space-lg vars.$space-lg vars.$space-md;
+  background: rgba(238, 242, 255, 0.92);
+  border-bottom: 1px solid rgba(79, 70, 229, 0.12);
+  backdrop-filter: blur(14px);
+
+  h1 {
+    margin: 0;
+    color: vars.$text-strong;
+    font-size: clamp(1.25rem, 2vw, 1.8rem);
+  }
+}
+
+.app-kicker {
+  margin: 0 0 vars.$space-xs;
+  color: vars.$primary-dark;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.app-content {
+  padding-bottom: vars.$space-2xl;
+}

@@ -1,0 +1,51 @@
+<section class="user-list-container" [attr.aria-busy]="loading()">
+  <header class="user-list-header">
+    <p class="eyebrow">Angular 22 scaffold demo</p>
+    <h1>Usuarios</h1>
+    <p class="subtitle">
+      Lazy routes, signals, formularios reactivos e integración HTTP en una sola feature.
+    </p>
+  </header>
+
+  <div class="search-panel">
+    <label class="search-label" for="user-search">Buscar usuarios</label>
+    <input
+      id="user-search"
+      type="search"
+      [formControl]="searchControl"
+      placeholder="Buscar por nombre, email o empresa..."
+      class="search-input"
+    />
+  </div>
+
+  <app-spinner [visible]="loading()" message="Cargando usuarios..." />
+
+  @if (error()) {
+    <div class="error-banner" role="alert">
+      {{ error() }}
+    </div>
+  }
+
+  @if (!loading() && !error()) {
+    <p class="results-count">{{ filteredUsers().length }} usuario(s) encontrado(s)</p>
+
+    <ul class="user-grid" aria-label="Lista de usuarios">
+      @for (user of filteredUsers(); track user.id) {
+        <li class="user-card">
+          <a [routerLink]="['/example/users', user.id]" class="user-card-link">
+            <div class="user-avatar" aria-hidden="true">
+              {{ user.name.charAt(0).toUpperCase() }}
+            </div>
+            <div class="user-info">
+              <h2 class="user-name">{{ user.name }}</h2>
+              <p class="user-email">{{ user.email }}</p>
+              <p class="user-company">{{ user.company.name }}</p>
+            </div>
+          </a>
+        </li>
+      } @empty {
+        <li class="empty-state">No se encontraron usuarios para ese criterio.</li>
+      }
+    </ul>
+  }
+</section>

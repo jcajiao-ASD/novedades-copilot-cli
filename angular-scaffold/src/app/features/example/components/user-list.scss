@@ -1,0 +1,181 @@
+@use '../../../../styles/variables' as vars;
+
+$card-padding: 1.25rem;
+
+.user-list-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: vars.$space-2xl vars.$space-lg vars.$space-3xl;
+}
+
+.user-list-header {
+  margin-bottom: vars.$space-xl;
+
+  h1 {
+    margin: 0 0 vars.$space-xs;
+    color: vars.$text-strong;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1.1;
+  }
+}
+
+.eyebrow {
+  margin: 0 0 vars.$space-xs;
+  color: vars.$primary;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 42rem;
+  color: vars.$text-muted;
+}
+
+.search-panel {
+  display: grid;
+  gap: vars.$space-sm;
+  padding: vars.$space-lg;
+  margin-bottom: vars.$space-lg;
+  background: vars.$surface;
+  border: 1px solid vars.$border;
+  border-radius: vars.$radius-lg;
+  box-shadow: vars.$shadow-sm;
+}
+
+.search-label {
+  color: vars.$text-strong;
+  font-weight: 600;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid vars.$border;
+  border-radius: vars.$radius-md;
+  font: inherit;
+  color: vars.$text-strong;
+  background: vars.$surface-soft;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &::placeholder {
+    color: vars.$text-subtle;
+  }
+
+  &:focus {
+    border-color: vars.$primary;
+    box-shadow: 0 0 0 0.2rem vars.$focus-ring;
+    outline: none;
+  }
+}
+
+.results-count {
+  margin: 0 0 vars.$space-md;
+  color: vars.$text-muted;
+  font-size: 0.95rem;
+}
+
+.user-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: vars.$space-md;
+  padding: 0;
+  margin: 0;
+}
+
+.user-card {
+  background: vars.$surface;
+  border: 1px solid vars.$border;
+  border-radius: vars.$radius-lg;
+  box-shadow: vars.$shadow-sm;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-2px);
+    box-shadow: vars.$shadow-md;
+  }
+}
+
+.user-card-link {
+  display: flex;
+  align-items: center;
+  gap: vars.$space-md;
+  height: 100%;
+  padding: $card-padding;
+  color: inherit;
+  text-decoration: none;
+  border-radius: inherit;
+
+  &:focus-visible {
+    outline: 3px solid vars.$focus-ring-strong;
+    outline-offset: 2px;
+  }
+}
+
+.user-avatar {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  color: vars.$surface;
+  background: vars.$primary-gradient;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.user-info {
+  min-width: 0;
+}
+
+.user-name,
+.user-email,
+.user-company {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-name {
+  margin: 0 0 0.35rem;
+  color: vars.$text-strong;
+  font-size: 1rem;
+}
+
+.user-email {
+  margin: 0 0 0.25rem;
+  color: vars.$text-muted;
+  font-size: 0.9rem;
+}
+
+.user-company {
+  margin: 0;
+  color: vars.$text-subtle;
+  font-size: 0.85rem;
+}
+
+.error-banner,
+.empty-state {
+  padding: vars.$space-lg;
+  border-radius: vars.$radius-lg;
+}
+
+.error-banner {
+  margin-bottom: vars.$space-md;
+  color: vars.$danger-text;
+  background: vars.$danger-bg;
+  border-left: 4px solid vars.$danger-border;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: vars.$text-muted;
+  background: vars.$surface;
+  border: 1px dashed vars.$border;
+}
